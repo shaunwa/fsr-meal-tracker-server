@@ -1,29 +1,5 @@
 import { getIngredients, getPopulatedMeals } from '../db';
 
-const conversions = {
-    cups: 48,
-    tablespoons: 3,
-    teaspoons: 1,
-}
-
-const convertToTeaspoons = ingredient =>
-    ingredient.amount * conversions[ingredient.units];
-
-const removeDuplicates = arr =>
-    [...new Set(arr)];
-
-const getAmounts = ingredients =>
-    ingredients.reduce((acc, ingredient) => ({
-        ...acc,
-        [ingredient.units]: acc[ingredient.units]
-            ? acc[ingredient.units] + ingredient.amount
-            : ingredient.amount,
-    }), {});
-
-const getAmountsString = ingredients =>
-    ingredients.map(ingredient => `${ingredient.amount} ${ingredient.units}`)
-               .join(' + ');
-
 const emptyIngredients = { count: 0, pounds: 0, cups: 0, tablespoons: 0, teaspoons: 0 };
 
 const condenseIngredients = ingredients =>
