@@ -32,8 +32,14 @@ export const getShoppingListRoute = {
     handler: async (req, res) => {
         const ingredients = await getIngredients();
         const populatedMeals = await getPopulatedMeals();
+        const futureMeals = populatedMeals.filter(meal => {
+            const mealDate = new Date(meal.plannedDate);
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            return mealDate > yesterday;
+        });
 
-        const requiredIngredients = populatedMeals.flatMap(meal => meal.recipe.ingredients);
+        const requiredIngredients = futureMeals.flatMap(meal => meal.recipe.ingredients);
         const condensedMealIngredients = condenseIngredients(requiredIngredients);
         const condensedUserIngredients = condenseIngredients(ingredients);
         const missingIngredients = getMissingIngredients(

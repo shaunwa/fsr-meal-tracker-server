@@ -13,7 +13,7 @@ module.exports = [{
     id: '234',
     name: 'Chicken Cordon Bleu',
     ingredients: [
-        { name: 'Chicken breast halves', amount: 4, units: 'count' },
+        { name: 'Chicken Breast Halves', amount: 4, units: 'count' },
         { name: 'Salt', amount: 0.25, units: 'teaspoons' },
         { name: 'Black Pepper', amount: 0.125, units: 'teaspoons' },
         { name: 'Swiss Cheese Slices', amount: 6, units: 'count' },
